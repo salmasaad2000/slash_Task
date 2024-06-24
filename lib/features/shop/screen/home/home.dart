@@ -1,7 +1,9 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:slash_task/commons/widgets/customer_shaps/containers/search_container.dart';
 import 'package:slash_task/commons/widgets/customer_shaps/curved_edges/curved_edges.dart';
+import 'package:slash_task/commons/widgets/images/rounded_image.dart';
 import 'package:slash_task/commons/widgets/products_card/product_card.dart';
 import 'package:slash_task/commons/widgets/text/sectionHadding.dart';
 import 'package:slash_task/features/shop/screen/home/widgets/home_appbar.dart';
@@ -23,7 +25,8 @@ List<CategoriesModel> categories = [
   CategoriesModel(
       name: 'Art', id: 5, image: 'assets/images/categories/new5.png'),
 ];
-List<ProdectModel> BestSelling = [
+
+List<ProdectModel> bestSelling = [
   ProdectModel(
       id: 1,
       name: "Best Seller 1",
@@ -51,7 +54,8 @@ List<ProdectModel> BestSelling = [
       price: 24.99,
       image: "assets/images/products/product5.jpg"),
 ];
-List<ProdectModel> NewArrival = [
+
+List<ProdectModel> newArrival = [
   ProdectModel(
       id: 1,
       name: "New Arrival  1",
@@ -79,7 +83,8 @@ List<ProdectModel> NewArrival = [
       price: 24.99,
       image: "assets/images/products/product5.jpg"),
 ];
-List<ProdectModel> RecommendedForYou = [
+
+List<ProdectModel> recommendedForYou = [
   ProdectModel(
       id: 1,
       name: "Recommended 1",
@@ -115,9 +120,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(children: [
+        child: Column(
+            children: [
           const HomeAppBar(),
           const SizedBox(height: Sizes.spaceBtwSections),
+          // Search Bar
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -135,10 +142,23 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.all(Sizes.defaultSpace),
-            child: RoundedImage(),
+           // panel
+           Padding(
+            padding: const EdgeInsets.all(Sizes.defaultSpace),
+            child: CarouselSlider(
+                options: CarouselOptions(
+                  viewportFraction: 1,
+                ),
+              items: const [
+                 RoundedImage(image: 'assets/images/products/product1.jpg'),
+                RoundedImage(image: 'assets/images/products/product4.jpg'),
+                RoundedImage(image: 'assets/images/products/product2.jpg'),
+              ],
+            ),
+
           ),
+          const SizedBox(height: Sizes.spaceBtwSections,),
+          // Categories
           Padding(
             padding: const EdgeInsets.only(left: Sizes.defaultSpace),
             child: Column(
@@ -153,7 +173,7 @@ class HomeScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (_, index) {
                       final category = categories[index];
-                      return categoriesIcon(
+                      return CategoriesIcon(
                         image: category.image,
                         title: category.name,
                         onTop: () {},
@@ -164,60 +184,79 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: Sizes.spaceBtwSections,),
+          // Best Selling
           Padding(
             padding: const EdgeInsets.only(left: Sizes.defaultSpace),
             child: Column(
               children: [
                 const SecationHead(sectionText: 'Best Selling'),
                 SizedBox(
-                  height: 100,
+                  height: 200,
                   child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: BestSelling.length,
+                    itemCount: bestSelling.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (_, index) {
-                      final bestselling = BestSelling[index];
-                      return const ProductCardVertical();
+                      final best_Selling = bestSelling[index];
+                      return  ProductCardVertical(
+                        productName:best_Selling.name,
+                        image:best_Selling.image ,
+                        price: best_Selling.price,
+
+                      );
                     },
                   ),
                 ),
               ],
             ),
           ),
+          const SizedBox(height: Sizes.spaceBtwSections,),
+          //New Arrival
           Padding(
             padding: const EdgeInsets.only(left: Sizes.defaultSpace),
             child: Column(
               children: [
                 const SecationHead(sectionText: 'New Arival'),
                 SizedBox(
-                  height: 100,
+                  height: 200,
                   child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: NewArrival.length,
+                    itemCount: newArrival.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (_, index) {
-                      final newArrival = NewArrival[index];
-                      return const ProductCardVertical();
+                      final new_Arrival = newArrival[index];
+                      return  ProductCardVertical(
+                        productName:new_Arrival.name,
+                        image:new_Arrival.image ,
+                        price: new_Arrival.price,
+                      );
                     },
                   ),
                 ),
               ],
             ),
           ),
+          const SizedBox(height: Sizes.spaceBtwSections,),
+          // Recommended for you
           Padding(
             padding: const EdgeInsets.only(left: Sizes.defaultSpace),
             child: Column(
               children: [
                 const SecationHead(sectionText: 'Recommended for you'),
                 SizedBox(
-                  height: 100,
+                  height: 200,
                   child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: RecommendedForYou.length,
+                    itemCount: recommendedForYou.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (_, index) {
-                      final recommendedForYou = RecommendedForYou[index];
-                      return const ProductCardVertical();
+                      final recommended_For_You = recommendedForYou[index];
+                      return  ProductCardVertical(
+                        productName:recommended_For_You.name,
+                        image:recommended_For_You.image ,
+                        price: recommended_For_You.price,
+                      );
                     },
                   ),
                 ),
@@ -230,46 +269,10 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class RoundedImage extends StatelessWidget {
-  const RoundedImage({
-    super.key,
-    this.width,
-    this.hieght,
-    required this.image,
-    required this.applyRadius,
-    this.border,
-    this.fit,
-    this.onPressed,
-  });
-  final double? width, hieght;
-  final String image;
-  final bool applyRadius;
-  final BoxBorder? border;
-  final BoxFit? fit;
-  final VoidCallback? onPressed;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Sizes.md),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(Sizes.md),
-        child: const Image(
-          image: AssetImage(
-            'assets/images/products/product4.png',
-          ),
-          fit: BoxFit.contain,
-        ),
-      ),
-    );
-  }
-}
 
-class categoriesIcon extends StatelessWidget {
-  const categoriesIcon({
+class CategoriesIcon extends StatelessWidget {
+  const CategoriesIcon({
     super.key,
     required this.image,
     required this.title,
