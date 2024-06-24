@@ -21,6 +21,7 @@ dependencies:
   intl: ^0.18.1
   logger: ^2.0.1
   url_launcher: ^6.1.12
+  carousel_slider: ^4.2.1
 
 
 dev_dependencies:
@@ -36,5 +37,6 @@ flutter:
   assets:
     - assets/logo/
     - assets/icons/
-    - assets/images/
+    - assets/images/categories/
+    - assets/images/products/
 
