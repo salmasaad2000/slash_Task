@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -11,7 +10,7 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.actions,
     this.leadingIcon,
-    this.showBackArrow = true,
+    this.showBackArrow = false,
     this.leadingOnPressed,
 
   });

@@ -14,35 +14,15 @@ class App_Theme{
   static ThemeData lighttheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    primaryColor: Colors.deepPurple,
-    scaffoldBackgroundColor: Colors.white60,
+    primaryColor: Colors.white,
+    scaffoldBackgroundColor: Colors.white,
     textTheme: Text_Theme.light_Text_Theme,
     elevatedButtonTheme: ElevatedButton_Theme.lightTheme,
     appBarTheme: App_Bar_Theme.lightAppBarTheme,
     bottomSheetTheme: Bottom_Sheet_Theme.lightBottomSheetTheme,
     checkboxTheme: CheckBox_Theme.lightCheckboxTheme,
     chipTheme: Chip_Theme.lightChipTheme,
-    outlinedButtonTheme: OutLine_Button_theme.darkOutLine_Button_theme,
+    outlinedButtonTheme: OutLine_Button_theme.lightOutLine_Button_theme,
     inputDecorationTheme: TextField_Theme.lightInputDecorationTheme,
   );
-  static ThemeData darktheme = ThemeData(
-    useMaterial3: true,
-    brightness: Brightness.dark,
-    primaryColor: Colors.deepPurple,
-    scaffoldBackgroundColor: Colors.black,
-    textTheme: Text_Theme.dark_Text_Theme,
-    elevatedButtonTheme: ElevatedButton_Theme.darkTheme,
-    appBarTheme: App_Bar_Theme.darkAppBarTheme,
-    bottomSheetTheme: Bottom_Sheet_Theme.darkBottomSheetTheme,
-    checkboxTheme: CheckBox_Theme.darkCheckboxTheme,
-    chipTheme: Chip_Theme.darkChipTheme,
-    outlinedButtonTheme: OutLine_Button_theme.darkOutLine_Button_theme,
-    inputDecorationTheme: TextField_Theme.darkInputDecorationTheme,
-
-
-
-
-
-  );
-
 }

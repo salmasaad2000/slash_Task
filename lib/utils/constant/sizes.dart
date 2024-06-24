@@ -51,6 +51,10 @@ class Sizes{
   static const double productItemHeight  = 160;
 
 
+  // card size
+
+  static const double cardRadiusLg = 16;
+
 // grid view spacing
   static const double gridViewSpacing  = 16;
 

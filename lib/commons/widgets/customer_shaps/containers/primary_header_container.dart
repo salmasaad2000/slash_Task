@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../../features/shop/screen/home/home.dart';
+
 class PrimaryHeaderContainer extends StatelessWidget {
   const PrimaryHeaderContainer({
     super.key,
@@ -9,6 +11,6 @@ class PrimaryHeaderContainer extends StatelessWidget {
 final Widget child;
   @override
   Widget build(BuildContext context) {
-    return TCurvedEdgesWidget();
+    return const CurvedEdgeWidget();
   }
 }
